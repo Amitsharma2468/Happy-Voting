@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Happy Voting</string>
+    <string name="show_vote">Show Vote</string>
+    <string name="log_out">Log Out</string>
+</resources>

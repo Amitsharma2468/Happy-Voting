@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799955178001",
+    "project_id": "happyvoting-93202",
+    "storage_bucket": "happyvoting-93202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799955178001:android:48e383b4f7836c7d7a17b0",
+        "android_client_info": {
+          "package_name": "com.example.happyvoting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhg0C24zYs0X0tL-LKaR6TZEQfnJO93Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

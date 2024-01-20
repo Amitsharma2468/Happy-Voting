@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to your Profile!"
+        android:textStyle="bold"
+        android:textColor="#3498db"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewCandidateName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Candidate Name: John Doe"
+        android:textStyle="bold"
+        android:textColor="#3498db"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:id="@+id/textViewRegistrationNo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Registration No: ABC123"
+        android:textStyle="bold"
+        android:textColor="#3498db"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCandidateName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/buttonVote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Vote"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegistrationNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="70dp"
+        android:onClick="goToVotePage" />
+
+    <Button
+        android:id="@+id/buttonCreateCandidate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create Candidate"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:onClick="goToCreateCandidatePage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
