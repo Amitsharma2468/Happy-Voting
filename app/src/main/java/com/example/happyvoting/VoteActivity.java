@@ -1,4 +1,5 @@
 package com.example.happyvoting;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,10 @@ import java.util.Map;
 
 public class VoteActivity extends AppCompatActivity {
 
-    private Spinner spinnerExecutiveMember, spinnerVicePresident, spinnerGeneralSecretary;
+    private Spinner spinnerExecutiveMember, spinnerVicePresident, spinnerGeneralSecretary,
+            spinnerAssistantGeneralSecretary, spinnerOrganizingSecretary,
+            spinnerPublicationSecretary, spinnerAssistantPublicationSecretary, spinnerSportsSecretary;
+
     private Button buttonSubmitVote;
 
     private FirebaseFirestore firestore;
@@ -43,6 +46,11 @@ public class VoteActivity extends AppCompatActivity {
         spinnerExecutiveMember = findViewById(R.id.spinnerExecutiveMember);
         spinnerVicePresident = findViewById(R.id.spinnerVicePresident);
         spinnerGeneralSecretary = findViewById(R.id.spinnerGeneralSecretary);
+        spinnerAssistantGeneralSecretary = findViewById(R.id.spinnerAssistantGeneralSecretary);
+        spinnerOrganizingSecretary = findViewById(R.id.spinnerOrganizingSecretary);
+        spinnerPublicationSecretary = findViewById(R.id.spinnerPublicationSecretary);
+        spinnerAssistantPublicationSecretary = findViewById(R.id.spinnerAssistantPublicationSecretary);
+        spinnerSportsSecretary = findViewById(R.id.spinnerSportsSecretary);
         buttonSubmitVote = findViewById(R.id.buttonSubmitVote);
 
         // Get current user
@@ -63,10 +71,16 @@ public class VoteActivity extends AppCompatActivity {
         fetchCandidateNames("Executive Member", spinnerExecutiveMember);
         fetchCandidateNames("Vice President", spinnerVicePresident);
         fetchCandidateNames("General Secretary", spinnerGeneralSecretary);
+        fetchCandidateNames("Assistant General Secretary", spinnerAssistantGeneralSecretary);
+        fetchCandidateNames("Organizing Secretary", spinnerOrganizingSecretary);
+        fetchCandidateNames("Publication Secretary", spinnerPublicationSecretary);
+        fetchCandidateNames("Assistant Publication Secretary", spinnerAssistantPublicationSecretary);
+        fetchCandidateNames("Sports Secretary", spinnerSportsSecretary);
 
         // Check if the user has already voted
         checkIfUserVoted();
     }
+
     private void fetchCandidateNames(String position, Spinner spinner) {
         firestore.collection("candidates")
                 .whereEqualTo("position", position)
@@ -89,6 +103,7 @@ public class VoteActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void checkIfUserVoted() {
         firestore.collection("votes")
                 .document(userId)
@@ -114,6 +129,11 @@ public class VoteActivity extends AppCompatActivity {
         spinnerExecutiveMember.setEnabled(false);
         spinnerVicePresident.setEnabled(false);
         spinnerGeneralSecretary.setEnabled(false);
+        spinnerAssistantGeneralSecretary.setEnabled(false);
+        spinnerOrganizingSecretary.setEnabled(false);
+        spinnerPublicationSecretary.setEnabled(false);
+        spinnerAssistantPublicationSecretary.setEnabled(false);
+        spinnerSportsSecretary.setEnabled(false);
         buttonSubmitVote.setEnabled(false);
     }
 
@@ -126,20 +146,32 @@ public class VoteActivity extends AppCompatActivity {
         String executiveMember = spinnerExecutiveMember.getSelectedItem().toString();
         String vicePresident = spinnerVicePresident.getSelectedItem().toString();
         String generalSecretary = spinnerGeneralSecretary.getSelectedItem().toString();
+        String assistantGeneralSecretary = spinnerAssistantGeneralSecretary.getSelectedItem().toString();
+        String organizingSecretary = spinnerOrganizingSecretary.getSelectedItem().toString();
+        String publicationSecretary = spinnerPublicationSecretary.getSelectedItem().toString();
+        String assistantPublicationSecretary = spinnerAssistantPublicationSecretary.getSelectedItem().toString();
+        String sportsSecretary = spinnerSportsSecretary.getSelectedItem().toString();
 
         // Validate if all positions are selected
-        if (executiveMember.isEmpty() || vicePresident.isEmpty() || generalSecretary.isEmpty()) {
+        if (executiveMember.isEmpty() || vicePresident.isEmpty() || generalSecretary.isEmpty()
+                || assistantGeneralSecretary.isEmpty() || organizingSecretary.isEmpty()
+                || publicationSecretary.isEmpty() || assistantPublicationSecretary.isEmpty() || sportsSecretary.isEmpty()) {
             Toast.makeText(VoteActivity.this, "Please vote for all positions", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Create a map with user's vote data
+        // Create a map with the user's vote data
         Map<String, Object> voteData = new HashMap<>();
         voteData.put("executiveMember", executiveMember);
         voteData.put("vicePresident", vicePresident);
         voteData.put("generalSecretary", generalSecretary);
+        voteData.put("assistantGeneralSecretary", assistantGeneralSecretary);
+        voteData.put("organizingSecretary", organizingSecretary);
+        voteData.put("publicationSecretary", publicationSecretary);
+        voteData.put("assistantPublicationSecretary", assistantPublicationSecretary);
+        voteData.put("sportsSecretary", sportsSecretary);
 
-        // Add user's vote data to Firestore
+        // Add the user's vote data to Firestore
         firestore.collection("votes")
                 .document(userId)
                 .set(voteData)
@@ -150,6 +182,11 @@ public class VoteActivity extends AppCompatActivity {
                         updateCandidateVoteCount(executiveMember);
                         updateCandidateVoteCount(vicePresident);
                         updateCandidateVoteCount(generalSecretary);
+                        updateCandidateVoteCount(assistantGeneralSecretary);
+                        updateCandidateVoteCount(organizingSecretary);
+                        updateCandidateVoteCount(publicationSecretary);
+                        updateCandidateVoteCount(assistantPublicationSecretary);
+                        updateCandidateVoteCount(sportsSecretary);
                         hasVoted = true;
                         disableVoting();
                     } else {

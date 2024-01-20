@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".VoteActivity">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/textViewExecutiveMember"
@@ -57,12 +61,104 @@
         android:layout_below="@id/textViewGeneralSecretary"
         android:layout_marginBottom="16dp"/>
 
+    <!-- New positions -->
+
+    <TextView
+        android:id="@+id/textViewAssistantGeneralSecretary"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Assistant General Secretary:"
+        android:textSize="18sp"
+        android:layout_below="@id/spinnerGeneralSecretary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerAssistantGeneralSecretary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewAssistantGeneralSecretary"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewOrganizingSecretary"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Organizing Secretary:"
+        android:textSize="18sp"
+        android:layout_below="@id/spinnerAssistantGeneralSecretary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerOrganizingSecretary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewOrganizingSecretary"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Additional new positions -->
+
+    <TextView
+        android:id="@+id/textViewPublicationSecretary"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Publication Secretary:"
+        android:textSize="18sp"
+        android:layout_below="@id/spinnerOrganizingSecretary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerPublicationSecretary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewPublicationSecretary"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewAssistantPublicationSecretary"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Assistant Publication Secretary:"
+        android:textSize="18sp"
+        android:layout_below="@id/spinnerPublicationSecretary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerAssistantPublicationSecretary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewAssistantPublicationSecretary"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewSportsSecretary"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Sports Secretary:"
+        android:textSize="18sp"
+        android:layout_below="@id/spinnerAssistantPublicationSecretary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerSportsSecretary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewSportsSecretary"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Add the remaining new positions in a similar way -->
+
     <Button
         android:id="@+id/buttonSubmitVote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit Vote"
         android:textSize="18sp"
-        android:layout_below="@id/spinnerGeneralSecretary"
+        android:layout_below="@id/spinnerSportsSecretary"
         android:layout_marginTop="32dp"/>
 </RelativeLayout>
+</ScrollView>

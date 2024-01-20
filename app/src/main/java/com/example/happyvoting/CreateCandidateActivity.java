@@ -46,7 +46,7 @@ public class CreateCandidateActivity extends AppCompatActivity {
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         // Set up Spinner dynamically
-        String[] positions = {"Executive Member", "Vice President", "General Secretary"};
+        String[] positions = {"Executive Member", "Vice President", "General Secretary","Assistant General Secretary","Organizing Secretary","Publication Secretary","Assistant Publication Secretary","Sports Secretary"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, positions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPosition.setAdapter(adapter);
